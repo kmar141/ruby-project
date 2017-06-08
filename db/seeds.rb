@@ -20,3 +20,5 @@ deal1 = Deal.new({
   'name' => "Two for Tuesday",
   'day' => "Tuesday"
   })
+
+burger1.save()

@@ -1,0 +1,12 @@
+<h1>Burgers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for burger in @burgers %>
+  <tr>
+    <td><%= burger.name %></td>
+  </tr>
+  <% end %>
+</table>
