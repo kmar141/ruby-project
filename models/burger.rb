@@ -1,11 +1,13 @@
 require_relative( '../db/sql_runner' )
+require_relative ( 'deal' )
+require_relative ( 'eatery' )
 
 class Burger
 
   attr_reader( :name, :id )
 
   def initialize ( options )
-    @id = nil || options['id'].to_i
+    @id = options['id'].to_i
     @name = options['name']
   end
 
@@ -19,7 +21,7 @@ class Burger
   end
 
   def self.all()
-    sql = "SELECT * FROM burgers"
+    sql = "SELECT * FROM burgers;"
     results = SqlRunner.run( sql )
     return results.map { |hash| Burger.new( hash ) }
   end
@@ -33,6 +35,18 @@ class Burger
   def self.delete_all
     sql = "DELETE FROM burgers"
     SqlRunner.run( sql )
+  end
+
+  def update(options)
+    sql = "UPDATE burgers SET (name) = (
+      '#{options['name']}')
+    WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM burgers WHERE id = #{@id};"
+    SqlRunner.run(sql)
   end
 
 end

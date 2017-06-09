@@ -1,12 +1,8 @@
 <h1>Burgers</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
   <% for burger in @burgers %>
-  <tr>
-    <td><%= burger.name %></td>
-  </tr>
+
+    <p>Burger: <%= burger.name %> </p><
+
+  <p><a href="/burgers/<%= burger.id %>">Show burger</a></p>
   <% end %>
-</table>

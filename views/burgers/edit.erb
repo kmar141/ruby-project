@@ -1,0 +1,9 @@
+<form action="/burgers/<%= @burgers.id %>" method="POST">
+
+
+  <label for="name">Burger: </label>
+  <input type="text" id="name" name="name" value = "<%=@burgers.name%>">
+
+
+
+  <input type="submit" value="Edit burger">

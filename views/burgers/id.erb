@@ -1,0 +1,9 @@
+
+<p>Burger: <%= @burgers.name %></p>
+
+
+<p><a href="/burgers/<%= @burgers.id %>/edit">Edit burger</a></p>
+
+<form action="/burgers/<%= @burgers.id %>/delete" method="POST">
+  <input type="submit" value="Delete burger">
+</form>
