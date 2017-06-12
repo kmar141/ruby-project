@@ -1,24 +1,28 @@
-DROP TABLE eateries;
-DROP TABLE burgers;
-DROP TABLE deals;
+DROP TABLE deals CASCADE;
+DROP TABLE eateries CASCADE;
+DROP TABLE burgers CASCADE;
+
+
+CREATE TABLE eateries 
+(
+  id SERIAL8 PRIMARY KEY,
+  name VARCHAR(255)
+);
 
 CREATE TABLE burgers
 (
   id SERIAL8 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  eatery_id INT8 REFERENCES eateries(id) ON DELETE CASCADE
+
 );
 
 CREATE TABLE deals 
 (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
-  day VARCHAR(255)
+  day VARCHAR(255),
+  eatery_id INT8 REFERENCES eateries(id) ON DELETE CASCADE
 );
 
-CREATE TABLE eateries 
-(
-  id SERIAL8 PRIMARY KEY,
-  name VARCHAR(255),
-  burger_id INT8 REFERENCES burgers(id) ON DELETE CASCADE,
-  deal_id INT8 REFERENCES deals(id) ON DELETE CASCADE
-);
+

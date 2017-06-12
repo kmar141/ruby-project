@@ -2,11 +2,14 @@ require_relative( '../models/burger.rb' )
 
 get '/burgers' do
   @burgers = Burger.all()
+  @eateries = Eatery.all()
   erb ( :"burgers/index" )
 end
 
 get '/burgers/new' do
   @burgers = Burger.all
+  @eateries = Eatery.all
+  @deals = Deal.all
   erb(:"burgers/new")
 end
 
@@ -29,7 +32,7 @@ end
 post '/burgers' do
   @burgers = Burger.new(params)
   @burgers.save()
-  erb(:"burgers/new")
+  redirect to '/burgers'
 end
 
 post '/burgers/:id/delete' do

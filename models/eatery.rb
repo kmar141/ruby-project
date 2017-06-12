@@ -9,15 +9,13 @@ class Eatery
   def initialize ( options )
     @id = options['id'].to_i
     @name = options['name']
-    @burger_id = options['burger_id']
-    @deal_id = options['deal_id']
   end
 
   def save()
     sql = "INSERT INTO eateries (
-      name, burger_id, deal_id
+      name
     ) VALUES (
-      '#{ @name }', '#{ @burger_id }', '#{ @deal_id }') RETURNING *"
+      '#{ @name }') RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
   end
@@ -25,13 +23,13 @@ class Eatery
     def self.all()
       sql = "SELECT * FROM eateries;"
       results = SqlRunner.run( sql )
-      return results.map { |hash| Deal.new( hash ) }
+      return results.map { |hash| Eatery.new( hash ) }
     end
 
     def self.find( id )
       sql = "SELECT * FROM eateries WHERE id=#{id}"
       results = SqlRunner.run( sql )
-      return Deal.new( results.first )
+      return Eatery.new( results.first )
     end
 
     def self.delete_all
@@ -40,8 +38,8 @@ class Eatery
     end
 
     def update(options)
-      sql = "UPDATE eateries SET (name, burger_id, deal_id) = (
-        '#{options['name']}', '#{options['burger_id']}', '#{options['deal_id']}')
+      sql = "UPDATE eateries SET (name) = (
+        '#{options['name']}')
       WHERE id = #{@id};"
       SqlRunner.run(sql)
     end
@@ -49,6 +47,20 @@ class Eatery
     def delete()
       sql = "DELETE FROM eateries WHERE id = #{@id};"
       SqlRunner.run(sql)
+    end
+
+    def burgers()
+      sql = "SELECT * FROM burgers 
+            WHERE burgers.eatery_id = #{@id};"
+      results = SqlRunner.run( sql )
+      return results.map { |hash| Burger.new( hash ) }
+    end
+
+    def deals()
+      sql = "SELECT * FROM deals 
+            WHERE deals.eatery_id = #{@id};"
+      results = SqlRunner.run( sql )
+      return results.map { |hash| Burger.new( hash ) }
     end
 
   end

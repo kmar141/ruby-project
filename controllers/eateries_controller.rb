@@ -1,17 +1,29 @@
 require_relative( '../models/eatery.rb' )
+require_relative( '../models/burger.rb' )
+require_relative( '../models/deal.rb' )
+
+require('pry-byebug')
 
 get '/eateries' do
   @eateries = Eatery.all()
+  @burgers = Burger.all()
+  @deals = Deal.all()
+
   erb ( :"eateries/index" )
 end
 
 get '/eateries/new' do
   @eateries = Eatery.all
+  @burgers = Burger.all
+  @deals = Deal.all
   erb(:"eateries/new")
 end
 
 get '/eateries/:id' do
-  @eateries = Eatery.find(params[:id])
+  @eatery = Eatery.find(params[:id])
+  @burgers = @eatery.burgers
+  @deals = Deal.all
+  # @burger = @eatery.burger
   erb(:"eateries/id")
 end
 
@@ -29,5 +41,5 @@ end
 post '/eateries' do
   @eateries = Eatery.new(params)
   @eateries.save()
-  erb(:"eateries/new")
+  redirect to "/eateries"
 end
