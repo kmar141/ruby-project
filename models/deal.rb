@@ -4,19 +4,20 @@ require_relative ( 'eatery' )
 
 class Deal
 
-  attr_reader( :name, :id, :day )
+  attr_reader( :name, :id, :day, :eatery_id )
 
   def initialize ( options )
     @id = options['id'].to_i
     @name = options['name']
     @day = options['day']
+    @eatery_id = options['eatery_id']
   end
 
   def save()
     sql = "INSERT INTO deals (
-      name, day
+      name, day, eatery_id
     ) VALUES (
-      '#{ @name }', '#{ @day }') RETURNING *"
+      '#{ @name }', '#{ @day }', #{ @eatery_id }) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
   end
@@ -39,8 +40,8 @@ class Deal
     end
 
     def update(options)
-      sql = "UPDATE deals SET (name, day) = (
-        '#{options['name']}', '#{options['day']}')
+      sql = "UPDATE deals SET (name, day, eatery_id) = (
+        '#{options['name']}', '#{options['day']}', '#{options['eatery_id']}')
       WHERE id = #{@id};"
       SqlRunner.run(sql)
     end

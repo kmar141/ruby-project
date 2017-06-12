@@ -7,6 +7,7 @@ end
 
 get '/deals/new' do
   @deals = Deal.all
+  @eateries = Eatery.all()
   erb(:"deals/new")
 end
 

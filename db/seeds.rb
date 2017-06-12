@@ -20,18 +20,21 @@ burger1 = Burger.new({
 burger2 = Burger.new({
   'name' => "Chickenburger",
   'eatery_id' => eatery1.id
-
   })
+burger1.save()
+burger2.save()
 
 deal1 = Deal.new({
   'name' => "Two for Tuesday",
   'day' => "Tuesday",
   'eatery_id' => eatery1.id
   })
+deal2 = Deal.new({
+  'name' => "Buy one get one free",
+  'day' => "Monday",
+  'eatery_id' => eatery2.id
+  })
 
-
-
-burger1.save()
-burger2.save()
 deal1.save()
+deal2.save()
 

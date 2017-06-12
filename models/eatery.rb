@@ -60,7 +60,7 @@ class Eatery
       sql = "SELECT * FROM deals 
             WHERE deals.eatery_id = #{@id};"
       results = SqlRunner.run( sql )
-      return results.map { |hash| Burger.new( hash ) }
+      return results.map { |hash| Deal.new( hash ) }
     end
 
   end

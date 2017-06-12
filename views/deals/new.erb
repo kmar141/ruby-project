@@ -8,6 +8,13 @@
 <label for="deal_day">Day deal applies: </label>
 <input type="text" id="day" name="day">
 
+<select name="eatery_id" >
+<% for eatery in @eateries %>
+
+<option value="<%=eatery.id%>"><%=eatery.name%></option>
+<%end%>
+</select>
+
   
   <input type="submit" value="Add deal">
 </form>

@@ -22,8 +22,7 @@ end
 get '/eateries/:id' do
   @eatery = Eatery.find(params[:id])
   @burgers = @eatery.burgers
-  @deals = Deal.all
-  # @burger = @eatery.burger
+  @deals = @eatery.deals
   erb(:"eateries/id")
 end
 
