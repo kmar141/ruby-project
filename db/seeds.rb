@@ -10,16 +10,18 @@ burger2 = Burger.new({
   'name' => "Chickenburger"
   })
 
-# eatery1 = Eatery.new({
-#   'name' => "Lucy's",
-#   'burger_id' => burger1.id,
-#   'deal_id' => deal1.id
-#   })
+deal1 = Deal.new({
+  'name' => "Two for Tuesday",
+  'day' => "Tuesday"
+  })
 
-# deal1 = Deal.new({
-#   'name' => "Two for Tuesday",
-#   'day' => "Tuesday"
-#   })
+eatery1 = Eatery.new({
+  'name' => "Lucys",
+  'burger_id' => burger1.id,
+  'deal_id' => deal1.id
+  })
 
 burger1.save()
 burger2.save()
+deal1.save()
+

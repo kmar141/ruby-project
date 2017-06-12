@@ -1,0 +1,8 @@
+<h1>Eateries</h1>
+
+<% for eatery in @eateries %>
+<p>Eatery name: <%= eatery.name %> </p>
+<p>Burger: <%= eatery.burger.name %></p>
+<p><a href="/eateries/<%= eatery.id %>">Show burger</a></p>
+<hr />
+<% end %>

@@ -1,0 +1,8 @@
+<h1>Burger deals</h1>
+
+  <% for deal in @deals %>
+
+    <p>Deal: <%= deal.name %> </p>
+
+  <p><a href="/deals/<%= deal.id %>">Show deal</a></p>
+  <% end %>

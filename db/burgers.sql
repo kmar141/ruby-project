@@ -19,6 +19,6 @@ CREATE TABLE eateries
 (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
-  burger_id INT8 REFERENCES burgers(id),
-  deal_id INT8 REFERENCES deals(id)
+  burger_id INT8 REFERENCES burgers(id) ON DELETE CASCADE,
+  deal_id INT8 REFERENCES deals(id) ON DELETE CASCADE
 );

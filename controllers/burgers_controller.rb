@@ -1,5 +1,3 @@
-require( 'sinatra' )
-require( 'sinatra/contrib/all' )
 require_relative( '../models/burger.rb' )
 
 get '/burgers' do
@@ -26,4 +24,16 @@ end
 get '/burgers/:id/edit' do 
   @burgers = Burger.find(params[:id])
   erb(:"burgers/edit")
+end
+
+post '/burgers' do
+  @burgers = Burger.new(params)
+  @burgers.save()
+  erb(:"burgers/new")
+end
+
+post '/burgers/:id/delete' do
+  @burgers = Burger.find(params[:id])
+  @burgers.delete()
+  redirect to "/burgers"
 end
