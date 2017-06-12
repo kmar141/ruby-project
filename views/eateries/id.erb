@@ -1,24 +1,23 @@
 <h1>Eatery details</h1>
 
-<table>
-    <th>
-    <td>Burgers</td>
-    </th>
+<h2>Burgers</h2>
 
-    <% for burger in @burgers %>
-  <tr>
-    <p><%= burger.name %></p>
-  </tr>
+<ul class="menu">
+  <% for burger in @burgers %>
+
+  <li><%= burger.name %></li>
+
+<% end %>
+</ul>
+
+<h2>Deals</h2>
+
+<ul class="menu">
+  
+
+  <% for deal in @deals %>
+
+  <li><%= deal.name %></li>
+  <li><%= deal.day %></li>
   <% end %>
-
-    <td>Deals</td>
-
-    <% for deal in @deals %>
-  <tr>
-    <p><%= deal.name %></p>
-    <p><%= deal.day %></p>
-  </tr>
-  <% end %>
-
-
-</table>
+</ul>
