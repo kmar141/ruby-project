@@ -24,11 +24,18 @@ end
 
 get '/deals/:id/edit' do 
   @deals = Deal.find(params[:id])
+  @eateries = Eatery.all()
   erb(:"deals/edit")
 end
 
 post '/deals' do
   @deals = Deal.new(params)
   @deals.save()
-  erb(:"deals/new")
+  redirect to '/deals'
+end
+
+post '/deals/:id/delete' do
+  @deals = Deal.find(params[:id])
+  @deals.delete()
+  redirect to "/deals"
 end

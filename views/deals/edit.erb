@@ -1,0 +1,20 @@
+<form action="/deals/<%= @deals.id %>" method="POST">
+
+
+  <label for="deal_name">Deal: </label>
+  <input type="text" id="name" name="name" value = "<%=@deals.name%>">
+
+  <label for="deal_day">Day of deal: </label>
+  <input type="text" id="day" name="day" value = "<%=@deals.day%>">
+
+  <select name="eatery_id" >
+  <% for eatery in @eateries %>
+
+  <option value="<%=eatery.id%>"><%=eatery.name%></option>
+  <%end%>
+  </select>
+
+
+
+  <input type="submit" value="Edit deal">
+  </form>

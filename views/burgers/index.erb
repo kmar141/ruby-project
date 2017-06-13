@@ -2,7 +2,8 @@
 
   <% for burger in @burgers %>
 
-    <p>Burger: <%= burger.name %> </p>
+    <h2><%= burger.name %> </h2>
 
-  <p><a href="/burgers/<%= burger.id %>">Show burger</a></p>
+  <p><a href="/burgers/<%= burger.id %>">Show burger<hr></hr></a></p>
   <% end %>
+

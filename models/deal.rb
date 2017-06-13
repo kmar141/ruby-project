@@ -29,7 +29,7 @@ class Deal
     end
 
     def self.find( id )
-      sql = "SELECT * FROM deals WHERE id=#{id}"
+      sql = "SELECT * FROM deals WHERE deals.id=#{id}"
       results = SqlRunner.run( sql )
       return Deal.new( results.first )
     end
