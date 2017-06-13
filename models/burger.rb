@@ -39,7 +39,7 @@ class Burger
   end
 
   def update(options)
-    sql = "UPDATE burgers SET (name) = (
+    sql = "UPDATE burgers SET (name, eatery_id) = (
       '#{options['name']}', #{options['eatery_id']})
     WHERE id = #{@id};"
     SqlRunner.run(sql)
@@ -49,6 +49,7 @@ class Burger
     sql = "DELETE FROM burgers WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
+
 
 end
 

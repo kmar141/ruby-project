@@ -1,8 +1,8 @@
 <h1>Eateries</h1>
 
 <% for eatery in @eateries %>
-<p>Eatery name: <%= eatery.name %> </p>
+<h2><%= eatery.name %> </h2>
 
 <p><a href="/eateries/<%= eatery.id %>">Show details</a></p>
-<hr />
+<hr></hr>
 <% end %>

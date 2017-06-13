@@ -2,7 +2,14 @@
 
 
   <label for="name">Burger: </label>
-  <input type="text" id="name" name="name" value = "<%=@burgers.name%>">
+  <input type="text" { pid="name" name="name" value = "<%=@burgers.name%>">
+
+  <select name="eatery_id" >
+  <% for eatery in @eateries %>
+
+  <option value="<%=eatery.id%>"><%=eatery.name%></option>
+  <%end%>
+  </select>
 
 
 

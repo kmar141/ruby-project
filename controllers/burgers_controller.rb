@@ -15,6 +15,7 @@ end
 
 get '/burgers/:id' do
   @burgers = Burger.find(params[:id])
+  @eatery = Eatery.find(@burgers.eatery_id)
   erb(:"burgers/id")
 end
 
@@ -26,6 +27,7 @@ end
 
 get '/burgers/:id/edit' do 
   @burgers = Burger.find(params[:id])
+  @eateries = Eatery.all
   erb(:"burgers/edit")
 end
 

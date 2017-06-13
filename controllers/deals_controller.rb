@@ -13,6 +13,7 @@ end
 
 get '/deals/:id' do
   @deals = Deal.find(params[:id])
+  @eatery = Eatery.find(@deals.eatery_id)
   erb(:"deals/id")
 end
 
